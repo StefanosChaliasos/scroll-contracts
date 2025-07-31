@@ -2,6 +2,38 @@
 
 This directory contains the solidity code for Scroll L1 bridge and rollup contracts and L2 bridge and pre-deployed contracts.
 
+**Property based testing based on Alloy properties**
+
+| You can find a description of the tests at `PROPERTY_BASED_TESTS.md` and the tests at `src/test/PropertyBasedTests.t.sol`.
+
+To run the tests:
+
+```bash
+forge test --match-contract PropertyBasedTests --fuzz-runs 10000 -vvv
+```
+
+Results:
+
+```
+Ran 13 tests for src/test/PropertyBasedTests.t.sol:PropertyBasedTests
+[PASS] testFuzz_FQP1_TimeoutGuaranteedProcessing(uint256) (runs: 10003, μ: 3090834, ~: 3094662)
+[PASS] testFuzz_FQP2_MessageQueueStable(uint256) (runs: 10003, μ: 3093303, ~: 3097219)
+[PASS] testFuzz_FQP3_StateInvariant(uint256) (runs: 10003, μ: 3088219, ~: 3092425)
+[PASS] testFuzz_FQP4_QueuedMessageProgress(uint256) (runs: 10003, μ: 3120331, ~: 3124098)
+[PASS] testFuzz_FQP5_OrderPreservation(uint256) (runs: 10003, μ: 3198975, ~: 3204656)
+[PASS] testFuzz_FQP6_FinalizationConfirmation(uint256) (runs: 10003, μ: 3259749, ~: 3258733)
+[PASS] testFuzz_SP1_RollingHashIntegrity(uint256) (runs: 10003, μ: 3030205, ~: 3042513)
+[PASS] testFuzz_SP2_EnforcedModeActivation(uint256) (runs: 10003, μ: 3031546, ~: 3039288)
+[PASS] testFuzz_SP3_ModeConsistency(uint256) (runs: 10003, μ: 3147296, ~: 3153329)
+[PASS] testFuzz_SP4_FeePayment(uint256) (runs: 10003, μ: 3040719, ~: 3043187)
+[PASS] testFuzz_SRP2_MonotonicState(uint256) (runs: 10003, μ: 4573755, ~: 4600396)
+[PASS] testFuzz_SRP3_JustifiedState(uint256) (runs: 10003, μ: 5960089, ~: 5923056)
+[PASS] testFuzz_SRP4_StateProgressionValidity(uint256) (runs: 10003, μ: 3269246, ~: 3267431)
+Suite result: ok. 13 passed; 0 failed; 0 skipped; finished in 107.46s (776.86s CPU time)
+
+Ran 1 test suite in 107.47s (107.46s CPU time): 13 tests passed, 0 failed, 0 skipped (13 total tests)
+```
+
 ## Directory Structure
 
 <pre>
